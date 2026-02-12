@@ -52,30 +52,3 @@ area.addEventListener(("mousemove"), (e) => {
     lastX = e.clientX;
     lastY = e.clientY;
 });
-
-area.addEventListener(("click"), (e) => {
-    if (lastX === null) {
-        lastX = e.clientX;
-        lastY = e.clientY;
-        return;
-    }
-
-    const rect = area.getBoundingClientRect();
-
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    const dx = centerX - e.clientX;
-    const dy = centerY - e.clientY;
-
-    const distance = Math.sqrt(dx * dx + dy * dy) || 1;
-
-
-    x += (dx / distance) * 100;
-    y += (dy / distance) * 100;
-
-    area.style.transform = `translate(${x}px, ${y}px)`;
-
-    lastX = e.clientX;
-    lastY = e.clientY;
-});
